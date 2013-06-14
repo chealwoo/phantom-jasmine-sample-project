@@ -23,8 +23,6 @@
                 </os>
             </activation>
             <properties>
-                <haxe.classifier>linux</haxe.classifier>
-                <haxe.executable>haxe</haxe.executable>
                 <os.executable.extension>bin</os.executable.extension>
             </properties>
         </profile>
@@ -36,8 +34,6 @@
                 </os>
             </activation>
             <properties>
-                <haxe.classifier>win</haxe.classifier>
-                <haxe.executable>haxe.exe</haxe.executable>
 				<os.executable.extension>exe</os.executable.extension>
             </properties>
         </profile>

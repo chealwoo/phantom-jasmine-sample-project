@@ -33,6 +33,7 @@ test("validateAlphaNumeric invalid", function() {
 	this.field.val('!');
 	var isValid = validation.validateAlphaNumeric(this.field);
 	equal(isValid, false, "! should not be a valid alphanumeric value");
+	ok (false); // my test
 });
 
 test("validateUsername user name already used", function() {
