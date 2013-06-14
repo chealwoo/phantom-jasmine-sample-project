@@ -7,6 +7,42 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>jstest-runner Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	
+    <properties>	
+        <phantomjs.version>1.7.0</phantomjs.version>
+        <os.executable.extension><!--Platform specific, defined in profile--></os.executable.extension>
+        <phantomjs.folder>${settings.localRepository}/org/phantomjs/phantomjs/${phantomjs.version}</phantomjs.folder>
+        <phantomjs.executable>${phantomjs.folder}/phantomjs-${phantomjs.version}.${os.executable.extension}</phantomjs.executable>
+	</properties>
+    <profiles>
+        <profile>
+            <id>os-unix</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <haxe.classifier>linux</haxe.classifier>
+                <haxe.executable>haxe</haxe.executable>
+                <os.executable.extension>bin</os.executable.extension>
+            </properties>
+        </profile>
+        <profile>
+            <id>os-win</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <haxe.classifier>win</haxe.classifier>
+                <haxe.executable>haxe.exe</haxe.executable>
+				<os.executable.extension>exe</os.executable.extension>
+            </properties>
+        </profile>
+    </profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -72,13 +108,22 @@
 			</testResource>
 		</testResources>
 		<plugins>
+		      <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>3.1</version>
+		        <configuration>
+		          <source>1.5</source>
+		          <target>1.5</target>
+		        </configuration>
+		      </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
 					<systemPropertyVariables>
-						<org.codehaus.jstestrunner.commandPattern>C:/phantomjs-1.3.0-win32-static/phantomjs.exe '%1$s' %2$s</org.codehaus.jstestrunner.commandPattern>
+						<org.codehaus.jstestrunner.commandPattern>${phantomjs.executable} '%1$s' %2$s</org.codehaus.jstestrunner.commandPattern>
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
