@@ -8,6 +8,7 @@ if ( phantom.args.length !== 2 ) {
     var htmlrunner = phantom.args[0],
         resultdir = phantom.args[1],
         page = new WebPage();
+	var fs = require('fs');
     
     // Echo the output of the tests to the Standard Output
     page.onConsoleMessage = function(msg, source, linenumber) {

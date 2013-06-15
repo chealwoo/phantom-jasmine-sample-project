@@ -24,7 +24,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <executable>phantomjs</executable>
+                    <executable>C:\bin\phantomjs-1.9.1-windows\phantomjs</executable>
                     <workingDirectory>src/test</workingDirectory>
                     <arguments>
                         <argument>js/phantomjs_jasminexml_runner.js</argument>
